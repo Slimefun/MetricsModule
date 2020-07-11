@@ -53,7 +53,7 @@ public class MetricsModule {
         metrics.addCustomChart(new ServerSizeChart());
         metrics.addCustomChart(new CompatibilityModeChart());
 
-        SlimefunPlugin.instance().getLogger().info("Now running SFMetrics v"
+        SlimefunPlugin.instance().getLogger().info("Now running MetricsModule v"
             + MetricsModule.class.getPackage().getImplementationVersion()
         );
     }
