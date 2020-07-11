@@ -1,9 +1,5 @@
 package dev.walshy.sfmetrics;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import dev.walshy.sfmetrics.charts.AddonsChart;
 import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
@@ -18,19 +14,8 @@ import dev.walshy.sfmetrics.charts.SlimefunVersionChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import org.bstats.bukkit.Metrics;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.logging.Level;
-
 @SuppressWarnings("unused")
 public class MetricsModule {
-
-    private static final String REPO_NAME = "MetricsModule";
-    private static final String BUILDS_PAGE = "https://thebusybiscuit.github.io/builds/Slimefun/" + REPO_NAME;
-    private static final String CURRENT_VERSION = MetricsModule.class.getPackage().getImplementationVersion();
 
     private MetricsModule() {}
 
@@ -56,55 +41,5 @@ public class MetricsModule {
         SlimefunPlugin.instance().getLogger().info("Now running MetricsModule v"
             + MetricsModule.class.getPackage().getImplementationVersion()
         );
-    }
-
-    public static boolean checkForUpdate() {
-        if (CURRENT_VERSION.equals("UNOFFICIAL")) return false;
-
-        int latest = getLatestVersion();
-        if (latest > Integer.parseInt(CURRENT_VERSION)) {
-            download(latest);
-            return true;
-        }
-        return false;
-    }
-
-    public static int getLatestVersion() {
-        if (CURRENT_VERSION.equals("UNOFFICIAL")) return -1;
-
-        try {
-            HttpResponse<JsonNode> response = Unirest.get(BUILDS_PAGE + "/builds.json")
-                .header("User-Agent", "MetricsModule Auto-Updater")
-                .asJson();
-            if (response.getStatus() < 200 || response.getStatus() >= 300) return -1;
-
-            JsonNode node = response.getBody();
-
-            if (node == null) return -1;
-
-            return node.getObject().getInt("last_successful");
-        } catch (UnirestException e) {
-            SlimefunPlugin.instance().getLogger().log(Level.SEVERE, "Failed to fetch latest builds for SFMetrics", e);
-            return -1;
-        }
-    }
-
-    public static void download(int version) {
-        File outputFile = new File(SlimefunPlugin.instance().getDataFolder(), "MetricsModule.jar");
-
-        try {
-            HttpResponse<InputStream> response = Unirest.get(BUILDS_PAGE + "/master/" + REPO_NAME + '-' + version
-                + ".jar").asBinary();
-
-            if (response.getStatus() >= 200 && response.getStatus() < 300) {
-                Files.copy(response.getBody(), outputFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            }
-        } catch (UnirestException e) {
-            SlimefunPlugin.instance().getLogger().log(Level.WARNING, "Failed to fetch the latest jar file from the" +
-                " builds page", e);
-        } catch (IOException e) {
-            SlimefunPlugin.instance().getLogger().log(Level.WARNING, "Failed to download and replace metrics module",
-                e);
-        }
     }
 }
