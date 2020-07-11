@@ -59,6 +59,8 @@ public class MetricsModule {
     }
 
     public static void checkForUpdate() {
+        if (CURRENT_VERSION.equals("UNOFFICIAL")) return;
+
         int latest = getLatestVersion();
         if (latest > Integer.parseInt(CURRENT_VERSION)) {
             download(latest);
