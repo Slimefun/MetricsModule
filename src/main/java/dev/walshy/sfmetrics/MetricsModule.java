@@ -58,13 +58,15 @@ public class MetricsModule {
         );
     }
 
-    public static void checkForUpdate() {
-        if (CURRENT_VERSION.equals("UNOFFICIAL")) return;
+    public static boolean checkForUpdate() {
+        if (CURRENT_VERSION.equals("UNOFFICIAL")) return false;
 
         int latest = getLatestVersion();
         if (latest > Integer.parseInt(CURRENT_VERSION)) {
             download(latest);
+            return true;
         }
+        return false;
     }
 
     public static int getLatestVersion() {
