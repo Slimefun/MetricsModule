@@ -5,6 +5,7 @@ import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
+import dev.walshy.sfmetrics.charts.MetricVersionChart;
 import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
 import dev.walshy.sfmetrics.charts.ResearchesEnabledChart;
 import dev.walshy.sfmetrics.charts.ResourcePackChart;
@@ -14,11 +15,13 @@ import dev.walshy.sfmetrics.charts.SlimefunVersionChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import org.bstats.bukkit.Metrics;
 
-@SuppressWarnings("unused")
 public class MetricsModule {
+
+    public static final String VERSION =  MetricsModule.class.getPackage().getImplementationVersion();
 
     private MetricsModule() {}
 
+    @SuppressWarnings("unused")
     public static void start() {
         Metrics metrics = new Metrics(SlimefunPlugin.instance(), 4574);
 
@@ -37,9 +40,8 @@ public class MetricsModule {
         metrics.addCustomChart(new CommandChart());
         metrics.addCustomChart(new ServerSizeChart());
         metrics.addCustomChart(new CompatibilityModeChart());
+        metrics.addCustomChart(new MetricVersionChart());
 
-        SlimefunPlugin.instance().getLogger().info("Now running MetricsModule v"
-            + MetricsModule.class.getPackage().getImplementationVersion()
-        );
+        SlimefunPlugin.instance().getLogger().info("Now running MetricsModule v" + VERSION);
     }
 }
