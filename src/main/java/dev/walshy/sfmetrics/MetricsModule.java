@@ -5,7 +5,7 @@ import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
-import dev.walshy.sfmetrics.charts.MetricVersionChart;
+import dev.walshy.sfmetrics.charts.MetricsVersionChart;
 import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
 import dev.walshy.sfmetrics.charts.ResearchesEnabledChart;
 import dev.walshy.sfmetrics.charts.ResourcePackChart;
@@ -17,7 +17,7 @@ import org.bstats.bukkit.Metrics;
 
 public class MetricsModule {
 
-    public static final String VERSION =  MetricsModule.class.getPackage().getImplementationVersion();
+    public static final String VERSION = MetricsModule.class.getPackage().getImplementationVersion();
 
     private MetricsModule() {}
 
@@ -40,7 +40,7 @@ public class MetricsModule {
         metrics.addCustomChart(new CommandChart());
         metrics.addCustomChart(new ServerSizeChart());
         metrics.addCustomChart(new CompatibilityModeChart());
-        metrics.addCustomChart(new MetricVersionChart());
+        metrics.addCustomChart(new MetricsVersionChart());
 
         SlimefunPlugin.instance().getLogger().info("Now running MetricsModule v" + VERSION);
     }
