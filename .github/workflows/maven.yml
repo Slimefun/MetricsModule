@@ -16,6 +16,13 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - uses: actions/checkout@master
+    - name: Find and Replace
+      uses: jacobtomlinson/gha-find-replace@0.1.2
+      with:
+        find: 'UNOFFICIAL'
+        replace: $GITHUB_RUN_NUMBER
+        include: 'pom.xml'
     - name: Build with Maven
       run: mvn -B package
     - name: Create a Release
