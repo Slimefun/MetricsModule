@@ -5,6 +5,7 @@ import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
+import dev.walshy.sfmetrics.charts.MetricAutoUpdatesChart;
 import dev.walshy.sfmetrics.charts.MetricsVersionChart;
 import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
 import dev.walshy.sfmetrics.charts.ResearchesEnabledChart;
@@ -40,8 +41,9 @@ public class MetricsModule {
         metrics.addCustomChart(new CommandChart());
         metrics.addCustomChart(new ServerSizeChart());
         metrics.addCustomChart(new CompatibilityModeChart());
-        metrics.addCustomChart(new MetricsVersionChart());
 
-        SlimefunPlugin.instance().getLogger().info("Now running MetricsModule v" + VERSION);
+        // Metric specific
+        metrics.addCustomChart(new MetricsVersionChart());
+        metrics.addCustomChart(new MetricAutoUpdatesChart());
     }
 }
