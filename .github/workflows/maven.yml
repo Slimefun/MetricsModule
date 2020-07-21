@@ -12,12 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Find and Replace
-      uses: jacobtomlinson/gha-find-replace@0.1.2
-      with:
-        find: 'UNOFFICIAL'
-        replace: "$GITHUB_RUN_NUMBER"
-        include: 'pom.xml'
+    - name: Print all env variables
+      run: pintenv
+    - name: Replace version
+      run: sed "s/UNOFFICIAL/$GITHUB_RUN_NUMBER/g" pom.xml
+    #- name: Find and Replace
+    #  uses: jacobtomlinson/gha-find-replace@0.1.2
+    #  with:
+    #    find: 'UNOFFICIAL'
+    #    replace: "$GITHUB_RUN_NUMBER"
+    #    include: 'pom.xml'
     - name: Debug
       run: cat pom.xml
     - name: Set up JDK 1.8
