@@ -5,7 +5,7 @@ import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
-import dev.walshy.sfmetrics.charts.MetricAutoUpdatesChart;
+import dev.walshy.sfmetrics.charts.MetricsAutoUpdatesChart;
 import dev.walshy.sfmetrics.charts.MetricsVersionChart;
 import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
 import dev.walshy.sfmetrics.charts.ResearchesEnabledChart;
@@ -44,6 +44,6 @@ public class MetricsModule {
 
         // Metric specific
         metrics.addCustomChart(new MetricsVersionChart());
-        metrics.addCustomChart(new MetricAutoUpdatesChart());
+        metrics.addCustomChart(new MetricsAutoUpdatesChart());
     }
 }
