@@ -27,41 +27,46 @@ public class MetricsModule {
     public static final String VERSION = MetricsModule.class.getPackage().getImplementationVersion();
     public static final int PLUGIN_ID = 4574;
 
+    private static SlimefunBranch branch;
+    private static int slimefunVersion = -1;
+    private static int charts = 0;
+
     private MetricsModule() {}
 
     public static void start() {
         Metrics metrics = new Metrics(SlimefunPlugin.instance(), PLUGIN_ID);
+        branch = SlimefunPlugin.getUpdater().getBranch();
+        slimefunVersion = SlimefunPlugin.getUpdater().getBuildNumber();
 
-        SlimefunPlugin.instance().getLogger().info("Now running MetricsModule build #" + VERSION);
+        addChart(metrics, AutoUpdaterChart::new);
+        addChart(metrics, ResourcePackChart::new);
+        addChart(metrics, SlimefunVersionChart::new);
+        addChart(metrics, ServerLanguageChart::new);
+        addChart(metrics, PlayerLanguageChart::new);
+        addChart(metrics, ResearchesEnabledChart::new);
+        addChart(metrics, GuideLayoutChart::new);
+        addChart(metrics, AddonsChart::new);
+        addChart(metrics, CommandChart::new);
+        addChart(metrics, ServerSizeChart::new);
+        addChart(metrics, CompatibilityModeChart::new);
+        addChart(metrics, MetricsVersionChart::new);
+        addChart(metrics, NewServersChart::new);
 
-        SlimefunBranch branch = SlimefunPlugin.getUpdater().getBranch();
-        int slimefunVersion = SlimefunPlugin.getUpdater().getBuildNumber();
-
-        addChart(metrics, branch, slimefunVersion, AutoUpdaterChart::new);
-        addChart(metrics, branch, slimefunVersion, ResourcePackChart::new);
-        addChart(metrics, branch, slimefunVersion, SlimefunVersionChart::new);
-        addChart(metrics, branch, slimefunVersion, ServerLanguageChart::new);
-        addChart(metrics, branch, slimefunVersion, PlayerLanguageChart::new);
-        addChart(metrics, branch, slimefunVersion, ResearchesEnabledChart::new);
-        addChart(metrics, branch, slimefunVersion, GuideLayoutChart::new);
-        addChart(metrics, branch, slimefunVersion, AddonsChart::new);
-        addChart(metrics, branch, slimefunVersion, CommandChart::new);
-        addChart(metrics, branch, slimefunVersion, ServerSizeChart::new);
-        addChart(metrics, branch, slimefunVersion, CompatibilityModeChart::new);
-        addChart(metrics, branch, slimefunVersion, MetricsVersionChart::new);
-        addChart(metrics, branch, slimefunVersion, NewServersChart::new);
+        SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
+        SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0} chart(s)!", charts);
     }
 
-    private static void addChart(Metrics metrics, SlimefunBranch branch, int build, Supplier<CustomChart> constructor) {
+    private static void addChart(Metrics metrics, Supplier<CustomChart> constructor) {
         try {
             CustomChart chart = constructor.get();
 
-            if (chart instanceof VersionDependentChart && !((VersionDependentChart) chart).isCompatible(branch, build)) {
+            if (chart instanceof VersionDependentChart && !((VersionDependentChart) chart).isCompatible(branch, slimefunVersion)) {
                 // Not compatible with this Slimefun version
                 return;
             }
 
             metrics.addCustomChart(chart);
+            charts++;
         }
         catch (Exception | LinkageError x) {
             SlimefunPlugin.instance().getLogger().log(Level.WARNING, x, () -> "Failed to load a bStats chart for Metrics #" + VERSION);
