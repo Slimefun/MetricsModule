@@ -53,7 +53,7 @@ public class MetricsModule {
         addChart(metrics, MetricsVersionChart::new);
         addChart(metrics, NewServersChart::new);
         addChart(metrics, MetricsAutoUpdatesChart::new);
-      
+
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0} chart(s)!", charts);
     }
