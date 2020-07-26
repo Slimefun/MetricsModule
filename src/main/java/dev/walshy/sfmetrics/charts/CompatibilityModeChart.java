@@ -1,8 +1,17 @@
 package dev.walshy.sfmetrics.charts;
 
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import org.bstats.bukkit.Metrics.SimplePie;
+import org.bukkit.Server;
 
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
+/**
+ * This {@link SimplePie} shows us how many {@link Server Servers} have enabled or disabled
+ * backwards-compatibility.
+ * 
+ * @author TheBusyBiscuit
+ *
+ */
 public class CompatibilityModeChart extends SimplePie {
 
     public CompatibilityModeChart() {

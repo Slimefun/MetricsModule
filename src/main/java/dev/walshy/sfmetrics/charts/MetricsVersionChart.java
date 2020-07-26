@@ -1,9 +1,16 @@
 package dev.walshy.sfmetrics.charts;
 
-import dev.walshy.sfmetrics.MetricsModule;
-import org.bstats.bukkit.Metrics;
+import org.bstats.bukkit.Metrics.SimplePie;
 
-public class MetricsVersionChart extends Metrics.SimplePie {
+import dev.walshy.sfmetrics.MetricsModule;
+
+/**
+ * This {@link SimplePie} shows us the currently installed version of this {@link MetricsModule}.
+ * 
+ * @author Walshy
+ *
+ */
+public class MetricsVersionChart extends SimplePie {
 
     public MetricsVersionChart() {
         super("metrics_version", () -> MetricsModule.VERSION);
