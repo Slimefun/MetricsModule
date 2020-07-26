@@ -1,8 +1,18 @@
 package dev.walshy.sfmetrics.charts;
 
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import org.bstats.bukkit.Metrics.SimplePie;
+import org.bukkit.Server;
 
+import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuideLayout;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
+/**
+ * This {@link SimplePie} allows us to see what {@link Server Servers} tend to set as
+ * their default {@link SlimefunGuideLayout}.
+ * 
+ * @author TheBusyBiscuit
+ *
+ */
 public class GuideLayoutChart extends SimplePie {
 
     public GuideLayoutChart() {

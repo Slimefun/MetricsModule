@@ -6,6 +6,7 @@ import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
 import dev.walshy.sfmetrics.charts.MetricsVersionChart;
+import dev.walshy.sfmetrics.charts.NewServersChart;
 import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
 import dev.walshy.sfmetrics.charts.ResearchesEnabledChart;
 import dev.walshy.sfmetrics.charts.ResourcePackChart;
@@ -18,12 +19,12 @@ import org.bstats.bukkit.Metrics;
 public class MetricsModule {
 
     public static final String VERSION = MetricsModule.class.getPackage().getImplementationVersion();
+    public static final int PLUGIN_ID = 4574;
 
     private MetricsModule() {}
 
-    @SuppressWarnings("unused")
     public static void start() {
-        Metrics metrics = new Metrics(SlimefunPlugin.instance(), 4574);
+        Metrics metrics = new Metrics(SlimefunPlugin.instance(), PLUGIN_ID);
 
         if (SlimefunPlugin.getUpdater().getBranch().isOfficial()) {
             // We really do not need this data if it is an unofficially modified build...
@@ -41,6 +42,7 @@ public class MetricsModule {
         metrics.addCustomChart(new ServerSizeChart());
         metrics.addCustomChart(new CompatibilityModeChart());
         metrics.addCustomChart(new MetricsVersionChart());
+        metrics.addCustomChart(new NewServersChart());
 
         SlimefunPlugin.instance().getLogger().info("Now running MetricsModule v" + VERSION);
     }

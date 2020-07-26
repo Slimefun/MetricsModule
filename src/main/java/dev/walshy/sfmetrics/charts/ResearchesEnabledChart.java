@@ -1,8 +1,18 @@
 package dev.walshy.sfmetrics.charts;
 
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import org.bstats.bukkit.Metrics.SimplePie;
+import org.bukkit.Server;
 
+import io.github.thebusybiscuit.slimefun4.core.researching.Research;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
+/**
+ * This {@link SimplePie} allows us to see how many {@link Server Servers} have enabled or
+ * disabled {@link Research Researches}.
+ * 
+ * @author TheBusyBiscuit
+ *
+ */
 public class ResearchesEnabledChart extends SimplePie {
 
     public ResearchesEnabledChart() {
