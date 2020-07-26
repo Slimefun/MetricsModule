@@ -11,6 +11,7 @@ import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
+import dev.walshy.sfmetrics.charts.MetricsAutoUpdatesChart;
 import dev.walshy.sfmetrics.charts.MetricsVersionChart;
 import dev.walshy.sfmetrics.charts.NewServersChart;
 import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
@@ -51,7 +52,8 @@ public class MetricsModule {
         addChart(metrics, CompatibilityModeChart::new);
         addChart(metrics, MetricsVersionChart::new);
         addChart(metrics, NewServersChart::new);
-
+        metrics.addCustomChart(new MetricsAutoUpdatesChart());
+      
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0} chart(s)!", charts);
     }
