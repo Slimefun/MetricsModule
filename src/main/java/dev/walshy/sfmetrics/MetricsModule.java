@@ -28,7 +28,7 @@ public class MetricsModule {
     public static final String VERSION = MetricsModule.class.getPackage().getImplementationVersion();
     public static final int PLUGIN_ID = 4574;
 
-    private static SlimefunBranch branch;
+    private static SlimefunBranch branch = SlimefunBranch.UNKNOWN;
     private static int slimefunVersion = -1;
     private static int charts = 0;
 
