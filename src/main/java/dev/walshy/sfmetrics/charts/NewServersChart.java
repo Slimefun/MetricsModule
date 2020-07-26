@@ -31,12 +31,12 @@ public class NewServersChart extends SingleLineChart implements VersionDependent
         if (branch == SlimefunBranch.DEVELOPMENT) {
             return build >= 600;
         }
-
-        if (branch == SlimefunBranch.STABLE) {
+        else if (branch == SlimefunBranch.STABLE) {
             return build >= 15;
         }
-
-        return false;
+        else {
+            return false;
+        }
     }
 
 }
