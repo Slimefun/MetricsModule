@@ -4,6 +4,8 @@ import org.bstats.bukkit.Metrics.SingleLineChart;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 
+import dev.walshy.sfmetrics.VersionDependentChart;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
 /**
@@ -15,13 +17,26 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class NewServersChart extends SingleLineChart {
+public class NewServersChart extends SingleLineChart implements VersionDependentChart {
 
     public NewServersChart() {
         super("auto_updates", () -> {
             boolean newServer = SlimefunPlugin.isNewlyInstalled();
             return newServer ? 1 : 0;
         });
+    }
+
+    @Override
+    public boolean isCompatible(SlimefunBranch branch, int build) {
+        if (branch == SlimefunBranch.DEVELOPMENT) {
+            return build >= 600;
+        }
+
+        if (branch == SlimefunBranch.STABLE) {
+            return build >= 15;
+        }
+
+        return false;
     }
 
 }
