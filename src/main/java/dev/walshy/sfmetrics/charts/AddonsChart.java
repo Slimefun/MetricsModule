@@ -1,12 +1,24 @@
 package dev.walshy.sfmetrics.charts;
 
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-import org.bstats.bukkit.Metrics.AdvancedPie;
-import org.bukkit.plugin.Plugin;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bstats.bukkit.Metrics.AdvancedPie;
+import org.bukkit.Server;
+import org.bukkit.plugin.Plugin;
+
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
+/**
+ * This {@link AdvancedPie} shows us what {@link SlimefunAddon Addons} are installed on the
+ * {@link Server}.
+ * 
+ * This allows us to see what Addons are popular than others in one overview.
+ * 
+ * @author TheBusyBiscuit
+ *
+ */
 public class AddonsChart extends AdvancedPie {
 
     public AddonsChart() {

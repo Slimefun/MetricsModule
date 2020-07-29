@@ -1,14 +1,22 @@
 package dev.walshy.sfmetrics.charts;
 
-import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bstats.bukkit.Metrics.AdvancedPie;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
+import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
+/**
+ * This {@link AdvancedPie} allows us to see what {@link Language Languages} are selected by
+ * {@link Player Players}.
+ * 
+ * @author TheBusyBiscuit
+ *
+ */
 public class PlayerLanguageChart extends AdvancedPie {
 
     public PlayerLanguageChart() {
