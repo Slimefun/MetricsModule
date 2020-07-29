@@ -16,29 +16,29 @@ public class ServerSizeChart extends SimplePie {
         super("server_size", () -> {
             int players = Bukkit.getOnlinePlayers().size();
 
-            if (players < 5) {
+            if (players <= 5) {
                 return "0-5";
             }
-            else if (players < 15) {
-                return "5-15";
+            else if (players <= 15) {
+                return "6-15";
             }
-            else if (players < 25) {
-                return "15-25";
+            else if (players <= 25) {
+                return "16-25";
             }
-            else if (players < 50) {
-                return "25-50";
+            else if (players <= 50) {
+                return "26-50";
             }
-            else if (players < 75) {
-                return "50-75";
+            else if (players <= 75) {
+                return "51-75";
             }
-            else if (players < 100) {
-                return "75-100";
+            else if (players <= 100) {
+                return "76-100";
             }
-            else if (players < 150) {
-                return "100-150";
+            else if (players <= 150) {
+                return "101-150";
             }
-            else if (players < 200) {
-                return "150-200";
+            else if (players <= 200) {
+                return "151-200";
             }
             else {
                 return "200+";
