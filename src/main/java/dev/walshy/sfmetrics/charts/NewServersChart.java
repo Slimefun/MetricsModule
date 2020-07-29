@@ -10,7 +10,11 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
 /**
  * This single line graph shows the amount of {@link Server Servers} that installed
- * Slimefun for the very first time at that moment in time.
+ * Slimefun for the very first time.
+ * More precisely: A {@link Server} will be included if the current session is the session
+ * in which Slimefun was first installed.
+ * It will be reset once the {@link Server} has stopped or restarted.
+ * Subsequent sessions will then no longer be counted.
  * 
  * This allows us to better analyse the growth of this {@link Plugin} on a day-to-day basis.
  * 
@@ -20,7 +24,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 public class NewServersChart extends SingleLineChart implements VersionDependentChart {
 
     public NewServersChart() {
-        super("auto_updates", () -> {
+        super("new_servers", () -> {
             boolean newServer = SlimefunPlugin.isNewlyInstalled();
             return newServer ? 1 : 0;
         });
