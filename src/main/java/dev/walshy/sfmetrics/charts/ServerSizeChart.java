@@ -13,7 +13,7 @@ import org.bukkit.Server;
 public class ServerSizeChart extends SimplePie {
 
     public ServerSizeChart() {
-        super("server_size", () -> {
+        super("online_players", () -> {
             int players = Bukkit.getOnlinePlayers().size();
 
             if (players <= 5) {
