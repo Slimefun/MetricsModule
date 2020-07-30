@@ -18,8 +18,9 @@ import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
 import dev.walshy.sfmetrics.charts.ResearchesEnabledChart;
 import dev.walshy.sfmetrics.charts.ResourcePackChart;
 import dev.walshy.sfmetrics.charts.ServerLanguageChart;
-import dev.walshy.sfmetrics.charts.ServerSizeChart;
+import dev.walshy.sfmetrics.charts.OnlinePlayersChart;
 import dev.walshy.sfmetrics.charts.SlimefunVersionChart;
+import dev.walshy.sfmetrics.charts.TickRateChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
@@ -48,11 +49,12 @@ public class MetricsModule {
         addChart(metrics, GuideLayoutChart::new);
         addChart(metrics, AddonsChart::new);
         addChart(metrics, CommandChart::new);
-        addChart(metrics, ServerSizeChart::new);
+        addChart(metrics, OnlinePlayersChart::new);
         addChart(metrics, CompatibilityModeChart::new);
         addChart(metrics, MetricsVersionChart::new);
         addChart(metrics, NewServersChart::new);
         addChart(metrics, MetricsAutoUpdatesChart::new);
+        addChart(metrics, TickRateChart::new);
 
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0} chart(s)!", charts);
