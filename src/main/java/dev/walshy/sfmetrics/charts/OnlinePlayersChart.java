@@ -10,9 +10,9 @@ import org.bukkit.Server;
  * @author TheBusyBiscuit
  *
  */
-public class ServerSizeChart extends SimplePie {
+public class OnlinePlayersChart extends SimplePie {
 
-    public ServerSizeChart() {
+    public OnlinePlayersChart() {
         super("online_players", () -> {
             int players = Bukkit.getOnlinePlayers().size();
 
