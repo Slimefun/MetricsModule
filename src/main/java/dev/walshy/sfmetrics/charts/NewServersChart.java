@@ -4,6 +4,8 @@ import org.bstats.bukkit.Metrics.SingleLineChart;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 
+import com.google.gson.JsonObject;
+
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
@@ -41,6 +43,16 @@ public class NewServersChart extends SingleLineChart implements VersionDependent
         else {
             return false;
         }
+    }
+
+    @Override
+    public String getName() {
+        return "New Servers";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }

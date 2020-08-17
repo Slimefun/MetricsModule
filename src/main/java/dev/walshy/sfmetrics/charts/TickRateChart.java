@@ -5,6 +5,9 @@ import java.util.Map;
 
 import org.bstats.bukkit.Metrics.DrilldownPie;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
 /**
@@ -14,7 +17,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class TickRateChart extends DrilldownPie {
+public class TickRateChart extends DrilldownPie implements SlimefunMetricsChart {
 
     public TickRateChart() {
         super("tick_rate", () -> {
@@ -37,6 +40,16 @@ public class TickRateChart extends DrilldownPie {
 
             return map;
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Tick Rates";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }

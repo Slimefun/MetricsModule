@@ -5,6 +5,9 @@ import java.util.Map;
 
 import org.bstats.bukkit.Metrics.AdvancedPie;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.commands.SubCommand;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
@@ -16,7 +19,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class CommandChart extends AdvancedPie {
+public class CommandChart extends AdvancedPie implements SlimefunMetricsChart {
 
     public CommandChart() {
         super("commands_ran", () -> {
@@ -28,6 +31,16 @@ public class CommandChart extends AdvancedPie {
 
             return commands;
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Commands";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }

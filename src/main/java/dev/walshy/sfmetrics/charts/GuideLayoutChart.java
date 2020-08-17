@@ -3,6 +3,9 @@ package dev.walshy.sfmetrics.charts;
 import org.bstats.bukkit.Metrics.SimplePie;
 import org.bukkit.Server;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuideLayout;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
@@ -13,7 +16,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class GuideLayoutChart extends SimplePie {
+public class GuideLayoutChart extends SimplePie implements SlimefunMetricsChart {
 
     public GuideLayoutChart() {
         super("guide_layout", () -> {
@@ -21,6 +24,16 @@ public class GuideLayoutChart extends SimplePie {
 
             return book ? "Book" : "Chest GUI";
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Slimefun Guide Layout";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }

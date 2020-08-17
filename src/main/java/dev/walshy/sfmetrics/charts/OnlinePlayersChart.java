@@ -4,13 +4,17 @@ import org.bstats.bukkit.Metrics.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
+
 /**
  * This {@link SimplePie} allows us to see how big a {@link Server} is (player-wise).
  * 
  * @author TheBusyBiscuit
  *
  */
-public class OnlinePlayersChart extends SimplePie {
+public class OnlinePlayersChart extends SimplePie implements SlimefunMetricsChart {
 
     public OnlinePlayersChart() {
         super("online_players", () -> {
@@ -44,6 +48,16 @@ public class OnlinePlayersChart extends SimplePie {
                 return "200+";
             }
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Online Players";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }

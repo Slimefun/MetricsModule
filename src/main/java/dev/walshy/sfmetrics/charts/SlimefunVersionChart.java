@@ -3,10 +3,12 @@ package dev.walshy.sfmetrics.charts;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bstats.bukkit.Metrics;
 import org.bstats.bukkit.Metrics.DrilldownPie;
 import org.bukkit.Server;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
@@ -18,7 +20,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class SlimefunVersionChart extends Metrics.DrilldownPie {
+public class SlimefunVersionChart extends DrilldownPie implements SlimefunMetricsChart {
 
     public SlimefunVersionChart() {
         super("slimefun_version", () -> {
@@ -30,5 +32,15 @@ public class SlimefunVersionChart extends Metrics.DrilldownPie {
 
             return outerMap;
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Slimefun Version";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 }

@@ -1,19 +1,27 @@
 package dev.walshy.sfmetrics;
 
-import org.bstats.bukkit.Metrics.CustomChart;
-
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
 
 /**
- * This {@link FunctionalInterface} marks a {@link CustomChart} as dependent on specific
+ * This interface marks a {@link SlimefunMetricsChart} as dependent on specific
  * versions of Slimefun.
  * 
  * @author TheBusyBiscuit
  *
  */
-@FunctionalInterface
-public interface VersionDependentChart {
+public interface VersionDependentChart extends SlimefunMetricsChart {
 
+    /**
+     * This method checks if this chart is compatible with the given installation of
+     * Slimefun.
+     * 
+     * @param branch
+     *            The {@link SlimefunBranch} of this version
+     * @param build
+     *            The build number of this version
+     * 
+     * @return Whether this chart is compatible
+     */
     boolean isCompatible(SlimefunBranch branch, int build);
 
 }

@@ -7,6 +7,9 @@ import org.bstats.bukkit.Metrics.AdvancedPie;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
@@ -19,7 +22,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class AddonsChart extends AdvancedPie {
+public class AddonsChart extends AdvancedPie implements SlimefunMetricsChart {
 
     public AddonsChart() {
         super("installed_addons", () -> {
@@ -33,6 +36,16 @@ public class AddonsChart extends AdvancedPie {
 
             return addons;
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Addons";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }

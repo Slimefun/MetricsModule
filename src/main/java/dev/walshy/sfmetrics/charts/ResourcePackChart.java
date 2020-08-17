@@ -3,6 +3,9 @@ package dev.walshy.sfmetrics.charts;
 import org.bstats.bukkit.Metrics.SimplePie;
 import org.bukkit.Server;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
 /**
@@ -12,7 +15,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class ResourcePackChart extends SimplePie {
+public class ResourcePackChart extends SimplePie implements SlimefunMetricsChart {
 
     public ResourcePackChart() {
         super("resourcepack", () -> {
@@ -28,6 +31,16 @@ public class ResourcePackChart extends SimplePie {
                 return "None";
             }
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Resource Packs";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }
