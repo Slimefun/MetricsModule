@@ -66,6 +66,7 @@ public class MetricsModule {
 
     private static <T extends CustomChart & SlimefunMetricsChart> void addChart(Metrics metrics, Supplier<T> constructor) {
         T chart = null;
+        totalCharts++;
 
         try {
             chart = constructor.get();
