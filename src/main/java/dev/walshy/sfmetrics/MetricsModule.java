@@ -29,9 +29,12 @@ public class MetricsModule {
     public static final String VERSION = MetricsModule.class.getPackage().getImplementationVersion();
     public static final int PLUGIN_ID = 4574;
 
+    private static boolean metricsAutoUpdates;
     private static SlimefunBranch branch = SlimefunBranch.UNKNOWN;
     private static int slimefunVersion = -1;
-    private static int charts = 0;
+
+    private static int enabledCharts = 0;
+    private static int totalCharts = 0;
 
     private MetricsModule() {}
 
@@ -39,6 +42,7 @@ public class MetricsModule {
         Metrics metrics = new Metrics(SlimefunPlugin.instance(), PLUGIN_ID);
         branch = SlimefunPlugin.getUpdater().getBranch();
         slimefunVersion = SlimefunPlugin.getUpdater().getBuildNumber();
+        metricsAutoUpdates = SlimefunPlugin.getMetricsService().hasAutoUpdates();
 
         addChart(metrics, AutoUpdaterChart::new);
         addChart(metrics, ResourcePackChart::new);
@@ -57,23 +61,36 @@ public class MetricsModule {
         addChart(metrics, TickRateChart::new);
 
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
-        SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0} chart(s)!", charts);
+        SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0}/{1} chart(s)!", new Object[] { enabledCharts, totalCharts });
     }
 
-    private static void addChart(Metrics metrics, Supplier<CustomChart> constructor) {
+    private static <T extends CustomChart & SlimefunMetricsChart> void addChart(Metrics metrics, Supplier<T> constructor) {
+        T chart = null;
+
         try {
-            CustomChart chart = constructor.get();
+            chart = constructor.get();
 
             if (chart instanceof VersionDependentChart && !((VersionDependentChart) chart).isCompatible(branch, slimefunVersion)) {
                 // Not compatible with this Slimefun version
                 return;
             }
 
+            // Test for any runtime exceptions
+            chart.getDataSample();
+
             metrics.addCustomChart(chart);
-            charts++;
+            enabledCharts++;
         }
         catch (Exception | LinkageError x) {
-            SlimefunPlugin.instance().getLogger().log(Level.WARNING, x, () -> "Failed to load a bStats chart for Metrics #" + VERSION);
+            warn(chart == null ? "Unknown" : chart.getName(), x);
         }
+    }
+
+    private static void warn(String chartName, Throwable x) {
+        if (!metricsAutoUpdates) {
+            SlimefunPlugin.instance().getLogger().log(Level.WARNING, "Turn on Auto-Updates for Slimefun-Metrics to avoid this issue!");
+        }
+
+        SlimefunPlugin.instance().getLogger().log(Level.WARNING, x, () -> "Failed to load bStats Chart \"" + chartName + "\" for Metrics #" + VERSION);
     }
 }

@@ -3,6 +3,8 @@ package dev.walshy.sfmetrics.charts;
 import org.bstats.bukkit.Metrics.SimplePie;
 import org.bukkit.Server;
 
+import com.google.gson.JsonObject;
+
 import dev.walshy.sfmetrics.MetricsModule;
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
@@ -35,5 +37,15 @@ public class MetricsAutoUpdatesChart extends SimplePie implements VersionDepende
         else {
             return false;
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Metrics Auto Updates";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 }

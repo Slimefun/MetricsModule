@@ -3,6 +3,9 @@ package dev.walshy.sfmetrics.charts;
 import org.bstats.bukkit.Metrics.SimplePie;
 import org.bukkit.Server;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
@@ -13,7 +16,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class ServerLanguageChart extends SimplePie {
+public class ServerLanguageChart extends SimplePie implements SlimefunMetricsChart {
 
     public ServerLanguageChart() {
         super("language", () -> {
@@ -21,6 +24,16 @@ public class ServerLanguageChart extends SimplePie {
             boolean supported = SlimefunPlugin.getLocalization().isLanguageLoaded(language.getId());
             return supported ? language.getId() : "Unsupported Language";
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Server Language";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }

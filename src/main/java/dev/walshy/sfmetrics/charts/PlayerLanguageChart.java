@@ -7,6 +7,9 @@ import org.bstats.bukkit.Metrics.AdvancedPie;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import com.google.gson.JsonObject;
+
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 
@@ -17,7 +20,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
  * @author TheBusyBiscuit
  *
  */
-public class PlayerLanguageChart extends AdvancedPie {
+public class PlayerLanguageChart extends AdvancedPie implements SlimefunMetricsChart {
 
     public PlayerLanguageChart() {
         super("player_languages", () -> {
@@ -33,6 +36,16 @@ public class PlayerLanguageChart extends AdvancedPie {
 
             return languages;
         });
+    }
+
+    @Override
+    public String getName() {
+        return "Player Languages";
+    }
+
+    @Override
+    public JsonObject getDataSample() throws Exception {
+        return getChartData();
     }
 
 }
