@@ -10,6 +10,7 @@ import dev.walshy.sfmetrics.charts.AddonsChart;
 import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
+import dev.walshy.sfmetrics.charts.ErrorReportsChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
 import dev.walshy.sfmetrics.charts.MetricsAutoUpdatesChart;
 import dev.walshy.sfmetrics.charts.MetricsVersionChart;
@@ -59,6 +60,7 @@ public class MetricsModule {
         addChart(metrics, NewServersChart::new);
         addChart(metrics, MetricsAutoUpdatesChart::new);
         addChart(metrics, TickRateChart::new);
+        addChart(metrics, ErrorReportsChart::new);
 
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0}/{1} chart(s)!", new Object[] { enabledCharts, totalCharts });
