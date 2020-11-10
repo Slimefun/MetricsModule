@@ -1,14 +1,15 @@
-name: Metric CD
+name: Metrics Deployment
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-  build:
+  publish:
 
+    name: Upload Release
     runs-on: ubuntu-latest
-    if: "contains(toJSON(github.event.commits.*.msg), '[ci skip]') == false"
+    if: contains(github.event.commits.*.msg, '[ci skip]') == false
 
     steps:
     - uses: actions/checkout@v2
