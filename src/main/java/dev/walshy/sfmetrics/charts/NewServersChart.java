@@ -1,5 +1,7 @@
 package dev.walshy.sfmetrics.charts;
 
+import javax.annotation.Nonnull;
+
 import org.bstats.bukkit.Metrics.SingleLineChart;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
@@ -33,14 +35,12 @@ public class NewServersChart extends SingleLineChart implements VersionDependent
     }
 
     @Override
-    public boolean isCompatible(SlimefunBranch branch, int build) {
+    public boolean isCompatible(@Nonnull SlimefunBranch branch, int build) {
         if (branch == SlimefunBranch.DEVELOPMENT) {
             return build >= 600;
-        }
-        else if (branch == SlimefunBranch.STABLE) {
+        } else if (branch == SlimefunBranch.STABLE) {
             return build >= 15;
-        }
-        else {
+        } else {
             return false;
         }
     }

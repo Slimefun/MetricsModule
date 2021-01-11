@@ -22,29 +22,21 @@ public class OnlinePlayersChart extends SimplePie implements SlimefunMetricsChar
 
             if (players <= 5) {
                 return "0-5";
-            }
-            else if (players <= 15) {
+            } else if (players <= 15) {
                 return "6-15";
-            }
-            else if (players <= 25) {
+            } else if (players <= 25) {
                 return "16-25";
-            }
-            else if (players <= 50) {
+            } else if (players <= 50) {
                 return "26-50";
-            }
-            else if (players <= 75) {
+            } else if (players <= 75) {
                 return "51-75";
-            }
-            else if (players <= 100) {
+            } else if (players <= 100) {
                 return "76-100";
-            }
-            else if (players <= 150) {
+            } else if (players <= 150) {
                 return "101-150";
-            }
-            else if (players <= 200) {
+            } else if (players <= 200) {
                 return "151-200";
-            }
-            else {
+            } else {
                 return "200+";
             }
         });

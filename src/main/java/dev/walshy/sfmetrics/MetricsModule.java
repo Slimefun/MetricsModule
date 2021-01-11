@@ -3,6 +3,8 @@ package dev.walshy.sfmetrics;
 import java.util.function.Supplier;
 import java.util.logging.Level;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.bstats.bukkit.Metrics;
 import org.bstats.bukkit.Metrics.CustomChart;
 
@@ -12,14 +14,15 @@ import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.ErrorReportsChart;
 import dev.walshy.sfmetrics.charts.GuideLayoutChart;
+import dev.walshy.sfmetrics.charts.IntegrationsChart;
 import dev.walshy.sfmetrics.charts.MetricsAutoUpdatesChart;
 import dev.walshy.sfmetrics.charts.MetricsVersionChart;
 import dev.walshy.sfmetrics.charts.NewServersChart;
+import dev.walshy.sfmetrics.charts.OnlinePlayersChart;
 import dev.walshy.sfmetrics.charts.PlayerLanguageChart;
 import dev.walshy.sfmetrics.charts.ResearchesEnabledChart;
 import dev.walshy.sfmetrics.charts.ResourcePackChart;
 import dev.walshy.sfmetrics.charts.ServerLanguageChart;
-import dev.walshy.sfmetrics.charts.OnlinePlayersChart;
 import dev.walshy.sfmetrics.charts.SlimefunVersionChart;
 import dev.walshy.sfmetrics.charts.TickRateChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
@@ -61,11 +64,13 @@ public class MetricsModule {
         addChart(metrics, MetricsAutoUpdatesChart::new);
         addChart(metrics, TickRateChart::new);
         addChart(metrics, ErrorReportsChart::new);
+        addChart(metrics, IntegrationsChart::new);
 
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0}/{1} chart(s)!", new Object[] { enabledCharts, totalCharts });
     }
 
+    @ParametersAreNonnullByDefault
     private static <T extends CustomChart & SlimefunMetricsChart> void addChart(Metrics metrics, Supplier<T> constructor) {
         T chart = null;
         totalCharts++;
@@ -83,12 +88,12 @@ public class MetricsModule {
 
             metrics.addCustomChart(chart);
             enabledCharts++;
-        }
-        catch (Exception | LinkageError x) {
+        } catch (Exception | LinkageError x) {
             warn(chart == null ? "Unknown" : chart.getName(), x);
         }
     }
 
+    @ParametersAreNonnullByDefault
     private static void warn(String chartName, Throwable x) {
         if (!metricsAutoUpdates) {
             SlimefunPlugin.instance().getLogger().log(Level.WARNING, "Turn on Auto-Updates for Slimefun-Metrics to avoid this issue!");

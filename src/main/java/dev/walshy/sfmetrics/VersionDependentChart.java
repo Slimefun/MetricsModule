@@ -1,5 +1,7 @@
 package dev.walshy.sfmetrics;
 
+import javax.annotation.Nonnull;
+
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
 
 /**
@@ -22,6 +24,6 @@ public interface VersionDependentChart extends SlimefunMetricsChart {
      * 
      * @return Whether this chart is compatible
      */
-    boolean isCompatible(SlimefunBranch branch, int build);
+    boolean isCompatible(@Nonnull SlimefunBranch branch, int build);
 
 }

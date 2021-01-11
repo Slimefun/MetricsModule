@@ -1,5 +1,7 @@
 package dev.walshy.sfmetrics.charts;
 
+import javax.annotation.Nonnull;
+
 import org.bstats.bukkit.Metrics.SingleLineChart;
 
 import com.google.gson.JsonObject;
@@ -29,14 +31,12 @@ public class ErrorReportsChart extends SingleLineChart implements VersionDepende
     }
 
     @Override
-    public boolean isCompatible(SlimefunBranch branch, int build) {
+    public boolean isCompatible(@Nonnull SlimefunBranch branch, int build) {
         if (branch == SlimefunBranch.DEVELOPMENT) {
             return build >= 638;
-        }
-        else if (branch == SlimefunBranch.STABLE) {
+        } else if (branch == SlimefunBranch.STABLE) {
             return build >= 16;
-        }
-        else {
+        } else {
             return false;
         }
     }

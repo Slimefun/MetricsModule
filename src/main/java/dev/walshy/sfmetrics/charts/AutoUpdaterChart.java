@@ -1,5 +1,7 @@
 package dev.walshy.sfmetrics.charts;
 
+import javax.annotation.Nonnull;
+
 import org.bstats.bukkit.Metrics.SimplePie;
 import org.bukkit.Server;
 
@@ -28,7 +30,7 @@ public class AutoUpdaterChart extends SimplePie implements VersionDependentChart
     }
 
     @Override
-    public boolean isCompatible(SlimefunBranch branch, int build) {
+    public boolean isCompatible(@Nonnull SlimefunBranch branch, int build) {
         // Auto updates are only meaningful to us for official builds
         return branch.isOfficial();
     }

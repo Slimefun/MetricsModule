@@ -35,7 +35,14 @@
         <dependency>
             <groupId>com.github.TheBusyBiscuit</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-17</version>
+            <version>RC-18</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
             <scope>provided</scope>
         </dependency>
 
@@ -51,7 +58,7 @@
         <defaultGoal>clean package</defaultGoal>
         <finalName>${project.artifactId}</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
-        
+
         <resources>
             <resource>
                 <targetPath>.</targetPath>
@@ -62,7 +69,7 @@
                 </includes>
             </resource>
         </resources>
-        
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -73,7 +80,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -86,13 +93,13 @@
                         </relocation>
                     </relocations>
                 </configuration>
-                
+
                 <executions>
                     <execution>
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                        
+
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
