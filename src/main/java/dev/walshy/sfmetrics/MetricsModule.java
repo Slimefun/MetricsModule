@@ -13,7 +13,6 @@ import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
 import dev.walshy.sfmetrics.charts.CommandChart;
 import dev.walshy.sfmetrics.charts.CompatibilityModeChart;
 import dev.walshy.sfmetrics.charts.ErrorReportsChart;
-import dev.walshy.sfmetrics.charts.GuideLayoutChart;
 import dev.walshy.sfmetrics.charts.IntegrationsChart;
 import dev.walshy.sfmetrics.charts.MetricsAutoUpdatesChart;
 import dev.walshy.sfmetrics.charts.MetricsVersionChart;
