@@ -54,7 +54,6 @@ public class MetricsModule {
         addChart(metrics, ServerLanguageChart::new);
         addChart(metrics, PlayerLanguageChart::new);
         addChart(metrics, ResearchesEnabledChart::new);
-        addChart(metrics, GuideLayoutChart::new);
         addChart(metrics, AddonsChart::new);
         addChart(metrics, CommandChart::new);
         addChart(metrics, OnlinePlayersChart::new);
