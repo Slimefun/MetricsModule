@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Generate build number
       id: buildnumber
-      uses: WalshyDev/build-number@v4 
+      uses: WalshyDev/build-number@master
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: Replace version
