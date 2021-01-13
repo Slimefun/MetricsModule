@@ -13,8 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Generate build number
+      id: buildnumber
+      uses: WalshyDev/build-number@v4 
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Replace version
-      run: sed -i "s/UNOFFICIAL/$GITHUB_RUN_NUMBER/g" pom.xml
+      run: sed -i "s/UNOFFICIAL/${{ steps.buildnumber.outputs.build_number }}/g" pom.xml
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
@@ -27,8 +32,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.run_number	}}
-        release_name: Build ${{ '#' }}${{ github.run_number	}}
+        tag_name: ${{ steps.buildnumber.outputs.build_number	}}
+        release_name: Build ${{ '#' }}${{ steps.buildnumber.outputs.build_number	}}
     - name: Upload Module Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
