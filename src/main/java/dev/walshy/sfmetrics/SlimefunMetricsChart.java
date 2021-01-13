@@ -1,5 +1,7 @@
 package dev.walshy.sfmetrics;
 
+import javax.annotation.Nonnull;
+
 import org.bstats.bukkit.Metrics.CustomChart;
 
 import com.google.gson.JsonObject;
@@ -17,6 +19,7 @@ public interface SlimefunMetricsChart {
      * 
      * @return The chart name
      */
+    @Nonnull
     String getName();
 
     /**
@@ -27,6 +30,7 @@ public interface SlimefunMetricsChart {
      * 
      * @return The data of this chart
      */
+    @Nonnull
     JsonObject getDataSample() throws Exception;
 
 }

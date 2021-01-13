@@ -1,5 +1,7 @@
 package dev.walshy.sfmetrics.charts;
 
+import javax.annotation.Nonnull;
+
 import org.bstats.bukkit.Metrics.SimplePie;
 import org.bukkit.Server;
 
@@ -27,14 +29,12 @@ public class MetricsAutoUpdatesChart extends SimplePie implements VersionDepende
     }
 
     @Override
-    public boolean isCompatible(SlimefunBranch branch, int build) {
+    public boolean isCompatible(@Nonnull SlimefunBranch branch, int build) {
         if (branch == SlimefunBranch.DEVELOPMENT) {
             return build >= 600;
-        }
-        else if (branch == SlimefunBranch.STABLE) {
+        } else if (branch == SlimefunBranch.STABLE) {
             return build >= 15;
-        }
-        else {
+        } else {
             return false;
         }
     }
