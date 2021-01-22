@@ -1,19 +1,18 @@
 package dev.walshy.sfmetrics.charts;
 
-import org.bstats.bukkit.Metrics.SimplePie;
-import org.bukkit.Server;
-
-import com.google.gson.JsonObject;
-
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import org.bstats.charts.SimplePie;
+import org.bstats.json.JsonObjectBuilder;
+import org.bukkit.Server;
+
+import javax.annotation.Nonnull;
 
 /**
  * This {@link SimplePie} shows us how many {@link Server Servers} have enabled or disabled
  * backwards-compatibility.
- * 
- * @author TheBusyBiscuit
  *
+ * @author TheBusyBiscuit
  */
 public class CompatibilityModeChart extends SimplePie implements SlimefunMetricsChart {
 
@@ -24,13 +23,15 @@ public class CompatibilityModeChart extends SimplePie implements SlimefunMetrics
         });
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Compatibility Mode";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

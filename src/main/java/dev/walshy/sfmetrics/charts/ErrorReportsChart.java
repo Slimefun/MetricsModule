@@ -2,13 +2,11 @@ package dev.walshy.sfmetrics.charts;
 
 import javax.annotation.Nonnull;
 
-import org.bstats.bukkit.Metrics.SingleLineChart;
-
-import com.google.gson.JsonObject;
-
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.ErrorReport;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
+import org.bstats.charts.SingleLineChart;
+import org.bstats.json.JsonObjectBuilder;
 
 /**
  * This single line graph shows the amount of {@link ErrorReport ErrorReports} generated.
@@ -41,13 +39,15 @@ public class ErrorReportsChart extends SingleLineChart implements VersionDepende
         }
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Error-Reports";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

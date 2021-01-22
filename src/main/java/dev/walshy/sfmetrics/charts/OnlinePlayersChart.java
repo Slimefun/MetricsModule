@@ -1,18 +1,17 @@
 package dev.walshy.sfmetrics.charts;
 
-import org.bstats.bukkit.Metrics.SimplePie;
+import dev.walshy.sfmetrics.SlimefunMetricsChart;
+import org.bstats.charts.SimplePie;
+import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 
-import com.google.gson.JsonObject;
-
-import dev.walshy.sfmetrics.SlimefunMetricsChart;
+import javax.annotation.Nonnull;
 
 /**
  * This {@link SimplePie} allows us to see how big a {@link Server} is (player-wise).
- * 
- * @author TheBusyBiscuit
  *
+ * @author TheBusyBiscuit
  */
 public class OnlinePlayersChart extends SimplePie implements SlimefunMetricsChart {
 
@@ -42,13 +41,15 @@ public class OnlinePlayersChart extends SimplePie implements SlimefunMetricsChar
         });
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Online Players";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

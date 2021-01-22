@@ -2,11 +2,10 @@ package dev.walshy.sfmetrics.charts;
 
 import javax.annotation.Nonnull;
 
-import org.bstats.bukkit.Metrics.SingleLineChart;
+import org.bstats.charts.SingleLineChart;
+import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
 import org.bukkit.plugin.Plugin;
-
-import com.google.gson.JsonObject;
 
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
@@ -45,13 +44,15 @@ public class NewServersChart extends SingleLineChart implements VersionDependent
         }
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "New Servers";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

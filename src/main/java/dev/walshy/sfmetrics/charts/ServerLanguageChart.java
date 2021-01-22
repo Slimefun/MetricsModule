@@ -1,13 +1,14 @@
 package dev.walshy.sfmetrics.charts;
 
-import org.bstats.bukkit.Metrics.SimplePie;
+import org.bstats.charts.SimplePie;
+import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
-
-import com.google.gson.JsonObject;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
+import javax.annotation.Nonnull;
 
 /**
  * This {@link SimplePie} allows us to see what {@link Server Servers} have configured as their
@@ -26,13 +27,15 @@ public class ServerLanguageChart extends SimplePie implements SlimefunMetricsCha
         });
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Server Language";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

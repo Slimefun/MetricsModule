@@ -2,10 +2,9 @@ package dev.walshy.sfmetrics.charts;
 
 import javax.annotation.Nonnull;
 
-import org.bstats.bukkit.Metrics.SimplePie;
+import org.bstats.charts.SimplePie;
+import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
-
-import com.google.gson.JsonObject;
 
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
@@ -35,13 +34,15 @@ public class AutoUpdaterChart extends SimplePie implements VersionDependentChart
         return branch.isOfficial();
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Auto Updates";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

@@ -3,12 +3,12 @@ package dev.walshy.sfmetrics.charts;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bstats.bukkit.Metrics.DrilldownPie;
-
-import com.google.gson.JsonObject;
-
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import org.bstats.charts.DrilldownPie;
+import org.bstats.json.JsonObjectBuilder;
+
+import javax.annotation.Nonnull;
 
 /**
  * This {@link DrilldownPie} shows us the configured tick rate.
@@ -48,13 +48,15 @@ public class TickRateChart extends DrilldownPie implements SlimefunMetricsChart 
         });
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Tick Rates";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

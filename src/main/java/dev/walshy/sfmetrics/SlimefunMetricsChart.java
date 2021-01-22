@@ -2,9 +2,8 @@ package dev.walshy.sfmetrics;
 
 import javax.annotation.Nonnull;
 
-import org.bstats.bukkit.Metrics.CustomChart;
-
-import com.google.gson.JsonObject;
+import org.bstats.charts.CustomChart;
+import org.bstats.json.JsonObjectBuilder;
 
 /**
  * This represents a {@link CustomChart} from Slimefun.
@@ -31,6 +30,6 @@ public interface SlimefunMetricsChart {
      * @return The data of this chart
      */
     @Nonnull
-    JsonObject getDataSample() throws Exception;
+    JsonObjectBuilder.JsonObject getDataSample() throws Exception;
 
 }

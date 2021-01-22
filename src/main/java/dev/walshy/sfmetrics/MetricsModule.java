@@ -6,7 +6,7 @@ import java.util.logging.Level;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bstats.bukkit.Metrics;
-import org.bstats.bukkit.Metrics.CustomChart;
+import org.bstats.charts.CustomChart;
 
 import dev.walshy.sfmetrics.charts.AddonsChart;
 import dev.walshy.sfmetrics.charts.AutoUpdaterChart;
