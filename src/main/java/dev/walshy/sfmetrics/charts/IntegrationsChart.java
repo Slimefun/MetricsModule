@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import org.bstats.bukkit.Metrics.AdvancedPie;
+import org.bstats.charts.AdvancedPie;
+import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
-
-import com.google.gson.JsonObject;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
@@ -49,13 +49,15 @@ public class IntegrationsChart extends AdvancedPie implements SlimefunMetricsCha
         }
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Integrations";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

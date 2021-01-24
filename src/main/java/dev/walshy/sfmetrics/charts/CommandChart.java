@@ -3,13 +3,13 @@ package dev.walshy.sfmetrics.charts;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bstats.bukkit.Metrics.AdvancedPie;
-
-import com.google.gson.JsonObject;
-
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.commands.SubCommand;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import org.bstats.charts.AdvancedPie;
+import org.bstats.json.JsonObjectBuilder;
+
+import javax.annotation.Nonnull;
 
 /**
  * This {@link AdvancedPie} shows us what {@link SubCommand} of Slimefun is run very often.
@@ -33,13 +33,15 @@ public class CommandChart extends AdvancedPie implements SlimefunMetricsChart {
         });
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Commands";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

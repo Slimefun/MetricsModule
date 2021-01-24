@@ -1,12 +1,13 @@
 package dev.walshy.sfmetrics.charts;
 
-import org.bstats.bukkit.Metrics.SimplePie;
+import org.bstats.charts.SimplePie;
+import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
-
-import com.google.gson.JsonObject;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
+import javax.annotation.Nonnull;
 
 /**
  * This {@link SimplePie} allows us to see what Slimefun Resource pack version is installed on
@@ -33,13 +34,15 @@ public class ResourcePackChart extends SimplePie implements SlimefunMetricsChart
         });
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Resource Packs";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 

@@ -3,14 +3,15 @@ package dev.walshy.sfmetrics.charts;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bstats.bukkit.Metrics.DrilldownPie;
+import org.bstats.charts.DrilldownPie;
+import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
-
-import com.google.gson.JsonObject;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+
+import javax.annotation.Nonnull;
 
 /**
  * This {@link DrilldownPie} allows us to see what version of Slimefun is installed on
@@ -34,13 +35,15 @@ public class SlimefunVersionChart extends DrilldownPie implements SlimefunMetric
         });
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Slimefun Version";
     }
 
+    @Nonnull
     @Override
-    public JsonObject getDataSample() throws Exception {
+    public JsonObjectBuilder.JsonObject getDataSample() throws Exception {
         return getChartData();
     }
 }
