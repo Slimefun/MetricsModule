@@ -24,11 +24,9 @@ public class ResourcePackChart extends SimplePie implements SlimefunMetricsChart
 
             if (version != null && version.startsWith("v")) {
                 return version + " (Official)";
-            }
-            else if (SlimefunPlugin.getItemTextureService().isActive()) {
+            } else if (SlimefunPlugin.getItemTextureService().isActive()) {
                 return "Custom / Modified";
-            }
-            else {
+            } else {
                 return "None";
             }
         });
