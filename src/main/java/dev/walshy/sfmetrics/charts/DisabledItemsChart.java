@@ -18,7 +18,7 @@ import java.util.Map;
  * <p>
  * This allows us to see what Items are very unpopular and may be considered for rework/removal.
  *
- * @author TheBusyBiscuit
+ * @author Walshy
  */
 public class DisabledItemsChart extends AdvancedPie implements SlimefunMetricsChart {
 
