@@ -55,6 +55,6 @@ public class DisabledItemsChart extends AdvancedPie implements SlimefunMetricsCh
                     disabledItems.put(item.getId(), 1);
                 }
             }
-        }).start();
+        }, "Slimefun - disabled items fetcher").start();
     }
 }
