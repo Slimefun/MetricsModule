@@ -5,6 +5,7 @@ import java.util.logging.Level;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+import dev.walshy.sfmetrics.charts.AverageTimingsChart;
 import dev.walshy.sfmetrics.charts.DisabledItemsChart;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.CustomChart;
@@ -67,6 +68,7 @@ public class MetricsModule {
         addChart(metrics, IntegrationsChart::new);
         addChart(metrics, CSCoreLibChart::new);
         addChart(metrics, DisabledItemsChart::new);
+        addChart(metrics, AverageTimingsChart::new);
 
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
         SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0}/{1} chart(s)!", new Object[] { enabledCharts, totalCharts });
