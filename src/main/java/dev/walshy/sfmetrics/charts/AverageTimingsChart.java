@@ -14,7 +14,13 @@ public class AverageTimingsChart extends SimplePie implements VersionDependentCh
     // So we make sure there's 15 or less (currently, 13 values)
     public AverageTimingsChart() {
         super("average_timings", () -> {
-            long averageMsTiming = SlimefunPlugin.getProfiler().getAndResetAverageTimings();
+            long averageMsTiming = 0;
+            try {
+                averageMsTiming = SlimefunPlugin.getProfiler().getAndResetAverageTimings();
+            } catch (ArithmeticException e) {
+                // I forgot we test this on startup when the timing would be 0.
+                // This is a quick and dirty fix - thank god for easy module stuff
+            }
 
             // 10ms diffs
             if (averageMsTiming <= 10) {
