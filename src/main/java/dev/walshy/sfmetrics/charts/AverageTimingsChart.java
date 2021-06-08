@@ -40,13 +40,13 @@ public class AverageTimingsChart extends SimplePie implements VersionDependentCh
             } else if (averageMsTiming <= 100) {
                 return "76-100";
             } else if (averageMsTiming <= 125) {
-                return "36-125";
+                return "101-125";
             } else if (averageMsTiming <= 150) {
-                return "41-150";
+                return "126-150";
             } else if (averageMsTiming <= 175) {
-                return "46-175";
+                return "151-175";
             } else if (averageMsTiming <= 200) {
-                return "178-200";
+                return "176-200";
 
                 // 50ms
             } else if (averageMsTiming <= 250) {
