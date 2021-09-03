@@ -8,7 +8,7 @@ import org.bukkit.Server;
 
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 /**
  * This {@link SimplePie} shows us how many {@link Server Servers} have enabled or disabled
@@ -23,7 +23,7 @@ public class AutoUpdaterChart extends SimplePie implements VersionDependentChart
 
     public AutoUpdaterChart() {
         super("auto_updates", () -> {
-            boolean enabled = SlimefunPlugin.getUpdater().isEnabled();
+            boolean enabled = Slimefun.getUpdater().isEnabled();
             return enabled ? "enabled" : "disabled";
         });
     }

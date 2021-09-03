@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 /**
  * This single line graph shows the amount of {@link Server Servers} that installed
@@ -28,7 +28,7 @@ public class NewServersChart extends SingleLineChart implements VersionDependent
 
     public NewServersChart() {
         super("new_servers", () -> {
-            boolean newServer = SlimefunPlugin.isNewlyInstalled();
+            boolean newServer = Slimefun.isNewlyInstalled();
             return newServer ? 1 : 0;
         });
     }

@@ -5,7 +5,7 @@ import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import javax.annotation.Nonnull;
 
@@ -20,11 +20,11 @@ public class ResourcePackChart extends SimplePie implements SlimefunMetricsChart
 
     public ResourcePackChart() {
         super("resourcepack", () -> {
-            String version = SlimefunPlugin.getItemTextureService().getVersion();
+            String version = Slimefun.getItemTextureService().getVersion();
 
             if (version != null && version.startsWith("v")) {
                 return version + " (Official)";
-            } else if (SlimefunPlugin.getItemTextureService().isActive()) {
+            } else if (Slimefun.getItemTextureService().isActive()) {
                 return "Custom / Modified";
             } else {
                 return "None";

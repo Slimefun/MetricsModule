@@ -2,7 +2,7 @@ package dev.walshy.sfmetrics.charts;
 
 import dev.walshy.sfmetrics.VersionDependentChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bstats.charts.SimplePie;
 import org.bstats.json.JsonObjectBuilder;
 
@@ -16,7 +16,7 @@ public class AverageTimingsChart extends SimplePie implements VersionDependentCh
         super("average_timings", () -> {
             long averageMsTiming = 0;
             try {
-                averageMsTiming = SlimefunPlugin.getProfiler().getAndResetAverageTimings();
+                averageMsTiming = Slimefun.getProfiler().getAndResetAverageTimings();
             } catch (ArithmeticException e) {
                 // I forgot we test this on startup when the timing would be 0.
                 // This is a quick and dirty fix - thank god for easy module stuff

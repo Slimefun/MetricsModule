@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import javax.annotation.Nonnull;
 
@@ -29,7 +29,7 @@ public class AddonsChart extends AdvancedPie implements SlimefunMetricsChart {
         super("installed_addons", () -> {
             Map<String, Integer> addons = new HashMap<>();
 
-            for (Plugin plugin : SlimefunPlugin.getInstalledAddons()) {
+            for (Plugin plugin : Slimefun.getInstalledAddons()) {
                 if (plugin.isEnabled()) {
                     addons.put(plugin.getName(), 1);
                 }
