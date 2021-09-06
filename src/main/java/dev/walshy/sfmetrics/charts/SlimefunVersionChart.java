@@ -9,7 +9,7 @@ import org.bukkit.Server;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import javax.annotation.Nonnull;
 
@@ -28,8 +28,8 @@ public class SlimefunVersionChart extends DrilldownPie implements SlimefunMetric
             Map<String, Map<String, Integer>> outerMap = new HashMap<>();
             Map<String, Integer> innerMap = new HashMap<>();
 
-            innerMap.put(SlimefunPlugin.getVersion(), 1);
-            outerMap.put(SlimefunPlugin.getUpdater().getBranch().getName(), innerMap);
+            innerMap.put(Slimefun.getVersion(), 1);
+            outerMap.put(Slimefun.getUpdater().getBranch().getName(), innerMap);
 
             return outerMap;
         });

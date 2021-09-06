@@ -1,8 +1,8 @@
 package dev.walshy.sfmetrics.charts;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bstats.charts.AdvancedPie;
 import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
@@ -50,8 +50,8 @@ public class DisabledItemsChart extends AdvancedPie implements SlimefunMetricsCh
     private static void fetchItems() {
         new Thread(() -> {
             disabledItems = new HashMap<>();
-            for (SlimefunItem item : SlimefunPlugin.getRegistry().getAllSlimefunItems()) {
-                if (item.getAddon().equals(SlimefunPlugin.instance()) && item.isDisabled()) {
+            for (SlimefunItem item : Slimefun.getRegistry().getAllSlimefunItems()) {
+                if (item.getAddon().equals(Slimefun.instance()) && item.isDisabled()) {
                     disabledItems.put(item.getId(), 1);
                 }
             }

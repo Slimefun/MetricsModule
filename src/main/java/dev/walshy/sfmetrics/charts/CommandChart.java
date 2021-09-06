@@ -5,7 +5,7 @@ import java.util.Map;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.commands.SubCommand;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bstats.charts.AdvancedPie;
 import org.bstats.json.JsonObjectBuilder;
 
@@ -25,7 +25,7 @@ public class CommandChart extends AdvancedPie implements SlimefunMetricsChart {
         super("commands_ran", () -> {
             Map<String, Integer> commands = new HashMap<>();
 
-            for (Map.Entry<SubCommand, Integer> entry : SlimefunPlugin.getCommand().getCommandUsage().entrySet()) {
+            for (Map.Entry<SubCommand, Integer> entry : Slimefun.getCommand().getCommandUsage().entrySet()) {
                 commands.put("/sf " + entry.getKey().getName(), entry.getValue());
             }
 

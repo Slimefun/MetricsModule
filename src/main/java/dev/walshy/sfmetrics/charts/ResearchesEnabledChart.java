@@ -5,8 +5,8 @@ import org.bstats.json.JsonObjectBuilder;
 import org.bukkit.Server;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
-import io.github.thebusybiscuit.slimefun4.core.researching.Research;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.api.researches.Research;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import javax.annotation.Nonnull;
 
@@ -21,7 +21,7 @@ public class ResearchesEnabledChart extends SimplePie implements SlimefunMetrics
 
     public ResearchesEnabledChart() {
         super("servers_with_researches_enabled", () -> {
-            boolean enabled = SlimefunPlugin.getRegistry().isFreeCreativeResearchingEnabled();
+            boolean enabled = Slimefun.getRegistry().isFreeCreativeResearchingEnabled();
             return enabled ? "enabled" : "disabled";
         });
     }

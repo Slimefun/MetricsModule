@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import org.bstats.charts.DrilldownPie;
 import org.bstats.json.JsonObjectBuilder;
 
@@ -22,9 +22,9 @@ public class TickRateChart extends DrilldownPie implements SlimefunMetricsChart 
     public TickRateChart() {
         super("tick_rate", () -> {
             Map<String, Map<String, Integer>> map = new HashMap<>();
-            int tickRate = SlimefunPlugin.getTickerTask().getTickRate();
-            int armorTickRate = SlimefunPlugin.getCfg().getInt("options.armor-update-interval");
-            int cargoDelay = SlimefunPlugin.getCfg().getInt("networks.cargo-ticker-delay");
+            int tickRate = Slimefun.getTickerTask().getTickRate();
+            int armorTickRate = Slimefun.getCfg().getInt("options.armor-update-interval");
+            int cargoDelay = Slimefun.getCfg().getInt("networks.cargo-ticker-delay");
 
             // For normal blocks the tick-rate will be taken literal
             Map<String, Integer> normal = new HashMap<>();

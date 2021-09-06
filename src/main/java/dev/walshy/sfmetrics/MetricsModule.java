@@ -28,7 +28,7 @@ import dev.walshy.sfmetrics.charts.ServerLanguageChart;
 import dev.walshy.sfmetrics.charts.SlimefunVersionChart;
 import dev.walshy.sfmetrics.charts.TickRateChart;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunBranch;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 public class MetricsModule {
 
@@ -45,10 +45,10 @@ public class MetricsModule {
     private MetricsModule() {}
 
     public static void start() {
-        Metrics metrics = new Metrics(SlimefunPlugin.instance(), PLUGIN_ID);
-        branch = SlimefunPlugin.getUpdater().getBranch();
-        slimefunVersion = SlimefunPlugin.getUpdater().getBuildNumber();
-        metricsAutoUpdates = SlimefunPlugin.getMetricsService().hasAutoUpdates();
+        Metrics metrics = new Metrics(Slimefun.instance(), PLUGIN_ID);
+        branch = Slimefun.getUpdater().getBranch();
+        slimefunVersion = Slimefun.getUpdater().getBuildNumber();
+        metricsAutoUpdates = Slimefun.getMetricsService().hasAutoUpdates();
 
         addChart(metrics, AutoUpdaterChart::new);
         addChart(metrics, ResourcePackChart::new);
@@ -70,8 +70,8 @@ public class MetricsModule {
         addChart(metrics, DisabledItemsChart::new);
         addChart(metrics, AverageTimingsChart::new);
 
-        SlimefunPlugin.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
-        SlimefunPlugin.instance().getLogger().log(Level.INFO, "with a total of {0}/{1} chart(s)!", new Object[] { enabledCharts, totalCharts });
+        Slimefun.instance().getLogger().log(Level.INFO, "Now running MetricsModule build #{0}", VERSION);
+        Slimefun.instance().getLogger().log(Level.INFO, "with a total of {0}/{1} chart(s)!", new Object[] { enabledCharts, totalCharts });
     }
 
     @ParametersAreNonnullByDefault
@@ -100,9 +100,9 @@ public class MetricsModule {
     @ParametersAreNonnullByDefault
     private static void warn(String chartName, Throwable x) {
         if (!metricsAutoUpdates) {
-            SlimefunPlugin.instance().getLogger().log(Level.WARNING, "Turn on Auto-Updates for Slimefun-Metrics to avoid this issue!");
+            Slimefun.instance().getLogger().log(Level.WARNING, "Turn on Auto-Updates for Slimefun-Metrics to avoid this issue!");
         }
 
-        SlimefunPlugin.instance().getLogger().log(Level.WARNING, x, () -> "Failed to load bStats Chart \"" + chartName + "\" for Metrics #" + VERSION);
+        Slimefun.instance().getLogger().log(Level.WARNING, x, () -> "Failed to load bStats Chart \"" + chartName + "\" for Metrics #" + VERSION);
     }
 }

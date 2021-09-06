@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import javax.annotation.Nonnull;
 
@@ -28,8 +28,8 @@ public class PlayerLanguageChart extends AdvancedPie implements SlimefunMetricsC
             Map<String, Integer> languages = new HashMap<>();
 
             for (Player p : Bukkit.getOnlinePlayers()) {
-                Language language = SlimefunPlugin.getLocalization().getLanguage(p);
-                boolean supported = SlimefunPlugin.getLocalization().isLanguageLoaded(language.getId());
+                Language language = Slimefun.getLocalization().getLanguage(p);
+                boolean supported = Slimefun.getLocalization().isLanguageLoaded(language.getId());
 
                 String lang = supported ? language.getId() : "Unsupported Language";
                 languages.merge(lang, 1, Integer::sum);

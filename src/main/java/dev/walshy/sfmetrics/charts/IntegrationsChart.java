@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 /**
  * This {@link AdvancedPie} shows us which {@link Plugin Plugins} the current
@@ -26,7 +26,7 @@ public class IntegrationsChart extends AdvancedPie implements SlimefunMetricsCha
 
     public IntegrationsChart() {
         super("integrations", () -> {
-            SlimefunPlugin slimefun = SlimefunPlugin.instance();
+            Slimefun slimefun = Slimefun.instance();
             Map<String, Integer> plugins = new HashMap<>();
 
             // Hard dependencies

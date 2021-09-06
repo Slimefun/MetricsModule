@@ -6,7 +6,7 @@ import org.bukkit.Server;
 
 import dev.walshy.sfmetrics.SlimefunMetricsChart;
 import io.github.thebusybiscuit.slimefun4.core.services.localization.Language;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import javax.annotation.Nonnull;
 
@@ -21,8 +21,8 @@ public class ServerLanguageChart extends SimplePie implements SlimefunMetricsCha
 
     public ServerLanguageChart() {
         super("language", () -> {
-            Language language = SlimefunPlugin.getLocalization().getDefaultLanguage();
-            boolean supported = SlimefunPlugin.getLocalization().isLanguageLoaded(language.getId());
+            Language language = Slimefun.getLocalization().getDefaultLanguage();
+            boolean supported = Slimefun.getLocalization().isLanguageLoaded(language.getId());
             return supported ? language.getId() : "Unsupported Language";
         });
     }
